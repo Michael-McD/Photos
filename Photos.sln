@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Photos.API\Photos.api", "Photos.API\Photos.api.csproj", "{073BA77A-7818-4FA9-BD8B-E5CACA27CA7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Photos.api", "Photos.API\Photos.api.csproj", "{073BA77A-7818-4FA9-BD8B-E5CACA27CA7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Photos.api.tests", "Photos.api.tests\Photos.api.tests.csproj", "{668D73E3-DA34-42B5-98C5-BF10D63E89E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{073BA77A-7818-4FA9-BD8B-E5CACA27CA7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{073BA77A-7818-4FA9-BD8B-E5CACA27CA7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{073BA77A-7818-4FA9-BD8B-E5CACA27CA7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{668D73E3-DA34-42B5-98C5-BF10D63E89E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{668D73E3-DA34-42B5-98C5-BF10D63E89E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{668D73E3-DA34-42B5-98C5-BF10D63E89E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{668D73E3-DA34-42B5-98C5-BF10D63E89E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
