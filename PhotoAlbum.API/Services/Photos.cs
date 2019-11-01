@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Photos.api.Services
-{
-    public class photos
+namespace PhotoAlbum.api.Services
+{    public class Photos
     {
     }
 }

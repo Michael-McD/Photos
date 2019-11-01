@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Photos.api.Controllers
+namespace PhotoAlbum.api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -16,10 +16,5 @@ namespace Photos.api.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public IEnumerable<Album> Get()
-        {
-            return new List<Album>() { new Album{ Id=1, Title="foo", UserId=1 } }; 
-        }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace Photos.api
+﻿namespace PhotoAlbum.api
 {
-    public class Album
+    public class AlbumDomainModel
     {
         public int Id {get;set;}
         public int UserId {get;set;}

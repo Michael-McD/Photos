@@ -10,8 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PhotoAlbum.api.Services;
 
-namespace Photos.api
+namespace PhotoAlbum.api
 {
     public class Startup
     {
@@ -26,6 +27,9 @@ namespace Photos.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddTransient<Photos>();
+            services.AddTransient<Albums>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

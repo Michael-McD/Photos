@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Photos.api.Controllers
+namespace PhotoAlbum.api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -18,11 +18,11 @@ namespace Photos.api.Controllers
         {
             _logger = logger;
         }
-
+        
         [HttpGet]
-        public IEnumerable<Photo> Get()
+        public IEnumerable<PhotoViewModel> Get()
         {
-            return new List<Photo>() { new Photo {Id=1, AlbumId=1, Title="foo", Url= "https://foo.com", ThumbnailUrl="https://foo.com" } }; 
+            return new List<PhotoViewModel>() { new PhotoViewModel { AlbumTitle = "Foo", PhotoTitle = "Goo", ThumbnailUrl = "url", URL = "url" } };
         }
     }
 }

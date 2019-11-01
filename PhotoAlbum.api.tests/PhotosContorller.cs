@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace Photos.api.tests
+namespace PhotoAlbum.api.tests
 {
     public class PhotosContorller
     {

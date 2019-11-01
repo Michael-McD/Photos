@@ -1,6 +1,6 @@
-namespace Photos.api
+namespace PhotoAlbum.api
 {
-    public class Photo
+    public class PhotoDomainModel
     {
         public int Id { get; set; }
 
