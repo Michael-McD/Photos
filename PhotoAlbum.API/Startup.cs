@@ -26,7 +26,7 @@ namespace PhotoAlbum.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHttpClient<Photos>(c =>
+            services.AddHttpClient<PhotosService>(c =>
             {
                 c.BaseAddress = new Uri("http://jsonplaceholder.typicode.com/");
                 c.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -34,8 +34,8 @@ namespace PhotoAlbum.api
 
             services.AddControllers();
 
-            services.AddTransient<Photos>();
-            services.AddTransient<Albums>();
+            //services.AddTransient<PhotosService>();
+            //services.AddTransient<AlbumsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

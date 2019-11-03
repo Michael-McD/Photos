@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PhotoAlbum.api.Services
 {
-    public class Albums
+    public class AlbumsService
     {
     }
 }
