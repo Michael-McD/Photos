@@ -3,7 +3,7 @@ using Xunit;
 
 namespace PhotoAlbum.api.tests
 {
-    public class PhotosContorller
+    public class AlbumControlerTest
     {
         [Fact]
         public void Test1()

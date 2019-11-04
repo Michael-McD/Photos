@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PhotoAlbum.api.Services;
 
 namespace PhotoAlbum.api.Controllers
 {
@@ -8,12 +9,21 @@ namespace PhotoAlbum.api.Controllers
     [Route("[controller]")]
     public class AlbumController : ControllerBase
     {
+        private readonly ILogger<PhotoController> logger;
+        private readonly PhotoAlbumService photoAlbumService;
 
-        private readonly ILogger<AlbumController> _logger;
-
-        public AlbumController(ILogger<AlbumController> logger)
+        public AlbumController(ILogger<PhotoController> logger, PhotoAlbumService photoAlbumService)
         {
-            _logger = logger;
+            this.logger = logger;
+            this.photoAlbumService = photoAlbumService;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<AlbumViewModel>> GetAsync()
+        {
+            var photos = await photoAlbumService.GetAlbums();
+
+            return new List<PhotoViewModel>() { new PhotoViewModel { AlbumTitle = "Foo", PhotoTitle = "Goo", ThumbnailUrl = "url", URL = "url" } };
         }
 
     }

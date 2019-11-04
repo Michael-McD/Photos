@@ -12,20 +12,19 @@ namespace PhotoAlbum.api.Controllers
     [Route("photos")]
     public class PhotoController : ControllerBase
     {
-
         private readonly ILogger<PhotoController> logger;
-        private readonly PhotosService photosService;
+        private readonly PhotoAlbumService photoAlbumService;
 
-        public PhotoController(ILogger<PhotoController> logger, PhotosService photosService)
+        public PhotoController(ILogger<PhotoController> logger, PhotoAlbumService photoAlbumService)
         {
             this.logger = logger;
-            this.photosService = photosService;
+            this.photoAlbumService = photoAlbumService;
         }
         
         [HttpGet]
         public async Task<IEnumerable<PhotoViewModel>> GetAsync()
         {
-            var foo = await photosService.GetPhotos();
+            var photos = await photoAlbumService.GetPhotos();
 
             return new List<PhotoViewModel>() { new PhotoViewModel { AlbumTitle = "Foo", PhotoTitle = "Goo", ThumbnailUrl = "url", URL = "url" } };
         }

@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 
 namespace PhotoAlbum.api.tests
 {
-    public class photos
+    public class PhotoAlbumServiceTest
     {
         [Fact]
         public void CanGetPhotos()
@@ -30,7 +30,7 @@ namespace PhotoAlbum.api.tests
             });
             var client = new HttpClient(clientHandlerStub);
             client.BaseAddress = new Uri("http://nowhere/");
-            var service = new PhotosService(client);
+            var service = new PhotoAlbumService(client);
 
             // act
             var actual = service.GetPhotos().Result;
