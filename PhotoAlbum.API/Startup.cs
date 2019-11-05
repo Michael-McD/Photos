@@ -34,7 +34,7 @@ namespace PhotoAlbum.api
 
             services.AddControllers();
 
-            //services.AddTransient<PhotosService>();
+            services.AddTransient<IPhotoAlbumService, PhotoAlbumService>();
             //services.AddTransient<AlbumsService>();
         }
 

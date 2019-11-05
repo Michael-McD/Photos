@@ -7,7 +7,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace PhotoAlbum.api.Services
-{ public class PhotoAlbumService
+{
+    public class PhotoAlbumService : IPhotoAlbumService
     {
         HttpClient _client { get; }
 
