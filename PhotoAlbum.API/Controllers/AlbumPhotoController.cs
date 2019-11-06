@@ -7,20 +7,19 @@ using PhotoAlbum.api.Services;
 
 
 /*
-/{user_id}/Albums
-/{user_id}/Photos
-/{user_id}/Photos?photoId={photo_id}
-/{user_id}/Photos?albumId={album_id}
+/{user_id}/Albums/
+{/{user_id}/Albums/{album_id}/photos
+{/{user_id}/Albums/{album_id}/photos/{photo_id}
 */
 namespace PhotoAlbum.api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AlbumController : ControllerBase
+    public class AlbumPhotoController : ControllerBase
     {
         private readonly IPhotoAlbumService photoAlbumService;
 
-        public AlbumController(IPhotoAlbumService photoAlbumService)
+        public AlbumPhotoController(IPhotoAlbumService photoAlbumService)
         {
             this.photoAlbumService = photoAlbumService;
         }
