@@ -1,11 +1,13 @@
 # Album Photo Viewer
 
 ## A simple API returning a users photo albums and links the photo images therein.
+* https://localhost:44347/AlbumPhotos/{userId}/albums
+* https://localhost:44347/AlbumPhotos/{userId}/albums/{albumId}
+* https://localhost:44347/AlbumPhotos/{userId}/albums/{albumId}/photos/{photoId}
 
 ### Example usage
 
-To get a collection of a users Album titles and IDs where the users ID is 1 
-
+To get a collection of a users Album titles and IDs where the users ID is 1.
 `GET https://localhost:44347/AlbumPhotos/1/albums`
 
 To get a collection of Photos (and aditional metadata) in users ID 1's Album ID 2
@@ -25,3 +27,4 @@ If a Photo does not exist in an album a 404 HTTP status NOT FOUND is returned e.
 ToDo:
 * add logging
 * better test coverage
+* error handling
