@@ -19,7 +19,7 @@ namespace PhotoAlbum.api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHttpClient<PhotoAlbumService>(c =>
+            services.AddHttpClient<IPhotoAlbumService, PhotoAlbumService>(c =>
             {
                 c.BaseAddress = new Uri("http://jsonplaceholder.typicode.com/");
                 c.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -27,7 +27,7 @@ namespace PhotoAlbum.api
 
             services.AddControllers();
 
-            services.AddTransient<IPhotoAlbumService, PhotoAlbumService>();
+            //services.AddTransient<IPhotoAlbumService, PhotoAlbumService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
