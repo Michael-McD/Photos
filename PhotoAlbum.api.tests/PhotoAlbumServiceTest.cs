@@ -22,15 +22,12 @@ namespace PhotoAlbum.api.tests
             // arrange
             var expected = new List<PhotoDomainModel> { new PhotoDomainModel() { Id = 1, AlbumId = 2, Title = "Title", ThumbnailUrl = "TURL", Url = "URL" } };
             
-            var configuration = new HttpConfiguration();
-            var clientHandlerStub = new DelegatingHandlerStub((request, cancellationToken) => {
-                request.SetConfiguration(configuration);
-                var response = request.CreateResponse(HttpStatusCode.OK, expected, "application/json");
-                return Task.FromResult(response);
+            var fakeHttpMessageHandler = new DelegatingHandlerStub(new HttpResponseMessage() {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(JsonConvert.SerializeObject(expected), Encoding.UTF8, "application/json") 
             });
-            var client = new HttpClient(clientHandlerStub);
-            client.BaseAddress = new Uri("http://nowhere/");
-            var service = new PhotoAlbumService(client);
+            var fakeHttpClient = new HttpClient(fakeHttpMessageHandler) {BaseAddress = new Uri("http://foo/")};
+            var service = new PhotoAlbumService(fakeHttpClient);
 
             // act
             var actual = service.GetPhotos().Result;

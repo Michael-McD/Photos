@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 using FluentAssertions;
-using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PhotoAlbum.api.tests
 {
