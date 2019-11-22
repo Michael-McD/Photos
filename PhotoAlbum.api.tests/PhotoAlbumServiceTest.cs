@@ -21,12 +21,13 @@ namespace PhotoAlbum.api.tests
         {
             // arrange
             var expected = new List<PhotoDomainModel> { new PhotoDomainModel() { Id = 1, AlbumId = 2, Title = "Title", ThumbnailUrl = "TURL", Url = "URL" } };
+            var source = JsonConvert.SerializeObject(expected);
             
-            var fakeHttpMessageHandler = new DelegatingHandlerStub(new HttpResponseMessage() {
+            var delegatingHandlerStub = new DelegatingHandlerStub(new HttpResponseMessage() {
                 StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(JsonConvert.SerializeObject(expected), Encoding.UTF8, "application/json") 
+                Content = new StringContent(source, Encoding.UTF8, "application/json") 
             });
-            var fakeHttpClient = new HttpClient(fakeHttpMessageHandler) {BaseAddress = new Uri("http://foo/")};
+            var fakeHttpClient = new HttpClient(delegatingHandlerStub) {BaseAddress = new Uri("http://foo/")};
             var service = new PhotoAlbumService(fakeHttpClient);
 
             // act

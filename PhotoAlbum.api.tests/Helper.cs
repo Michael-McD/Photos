@@ -10,16 +10,16 @@ namespace PhotoAlbum.api.tests
 {
     public class DelegatingHandlerStub : DelegatingHandler
     {
-        private readonly HttpResponseMessage _fakeResponse;
+        private readonly HttpResponseMessage responseMessage;
 
         public DelegatingHandlerStub(HttpResponseMessage responseMessage)
         {
-            _fakeResponse = responseMessage;
+            this.responseMessage = responseMessage;
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            return await Task.FromResult(_fakeResponse);
+            return await Task.FromResult(responseMessage);
         }
     }
 }
