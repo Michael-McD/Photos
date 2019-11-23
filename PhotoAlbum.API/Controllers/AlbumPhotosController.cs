@@ -21,30 +21,33 @@ namespace PhotoAlbum.api.Controllers
         }
 
         [HttpGet("{userId}/albums")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(404)]
-        public async Task<IEnumerable<AlbumViewModel>> GetAsync(int userId)
+        public async Task<ActionResult<IEnumerable<AlbumViewModel>>> GetAsync(int userId)
         {
             var albums = await photoAlbumService.GetAlbums();
 
-            return from album in albums
-                   where album.UserId == userId
-                   select new AlbumViewModel
-                   {
-                       AlbumId = album.Id,
-                       AlbumTitle = album.Title
-                   };
+            var albumViewModels = (from album in albums
+                where album.UserId == userId
+                select new AlbumViewModel
+                {
+                    AlbumId = album.Id,
+                    AlbumTitle = album.Title
+                }).ToList();
+
+            if (albumViewModels == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(albumViewModels);
         }
 
         [HttpGet("{userId}/albums/{albumId}")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(404)]
-        public async Task<IEnumerable<PhotoViewModel>> GetAsync(int userId, int albumId)
+        public async Task<ActionResult<IEnumerable<PhotoViewModel>>> GetAsync(int userId, int albumId)
         {
             var albums = await photoAlbumService.GetAlbums();
             var photos = await photoAlbumService.GetPhotos();
 
-            return from album in albums
+            var photoViewModels =  from album in albums
                    where album.UserId == userId && album.Id == albumId
                    join photo in photos on album.Id equals photo.AlbumId
                    select new PhotoViewModel
@@ -55,11 +58,11 @@ namespace PhotoAlbum.api.Controllers
                        URL = photo.Url,
                        ThumbnailUrl = photo.ThumbnailUrl
                    };
+
+            return Ok(photoViewModels);
         }
 
         [HttpGet("{userId}/albums/{albumId}/photo/{photoId}")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(404)]
         public async Task<ActionResult<PhotoViewModel>> GetAsync(int userId, int albumId, int photoId)
         {
             var albums = await photoAlbumService.GetAlbums();
