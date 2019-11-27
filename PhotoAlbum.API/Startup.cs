@@ -24,6 +24,12 @@ namespace PhotoAlbum.api
                 c.BaseAddress = new Uri("http://jsonplaceholder.typicode.com/");
                 c.DefaultRequestHeaders.Add("Accept", "application/json");
             });
+            
+            services.AddHttpClient<IF1DriverService, F1DriverService>(c =>
+            {
+                c.BaseAddress = new Uri("http://ergast.com/");
+                c.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
 
             services.AddControllers();
 

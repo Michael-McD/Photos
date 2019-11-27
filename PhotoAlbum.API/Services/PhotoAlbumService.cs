@@ -10,16 +10,16 @@ namespace PhotoAlbum.api.Services
 {
     public class PhotoAlbumService : IPhotoAlbumService
     {
-        HttpClient _client { get; }
+        private HttpClient client { get; }
 
         public PhotoAlbumService(HttpClient client)
         {
-            _client = client;
+            this.client = client;
         }
 
         public async Task<IEnumerable<PhotoDomainModel>> GetPhotos()
         {
-            var response = await _client.GetAsync("photos");
+            var response = await client.GetAsync("photos");
 
             if (response.IsSuccessStatusCode)
             {
@@ -35,7 +35,7 @@ namespace PhotoAlbum.api.Services
 
         public async Task<IEnumerable<AlbumDomainModel>> GetAlbums()
         {
-            var response = await _client.GetAsync("albums");
+            var response = await client.GetAsync("albums");
 
             if (response.IsSuccessStatusCode)
             {
