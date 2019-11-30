@@ -32,8 +32,6 @@ namespace PhotoAlbum.api
             });
 
             services.AddControllers();
-
-            //services.AddTransient<IPhotoAlbumService, PhotoAlbumService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

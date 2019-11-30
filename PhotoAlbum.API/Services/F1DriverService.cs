@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PhotoAlbum.API.Models;
 
 namespace PhotoAlbum.api.Services
@@ -14,12 +20,26 @@ namespace PhotoAlbum.api.Services
             this.httpClient = httpClient;
         }
 
-        public IEnumerable<F1DriversDomainModel> GetDrivers()
+        public async Task<IEnumerable<F1DriversDomainModel>> GetDrivers()
         {
-            throw new NotImplementedException();
+            var response = await httpClient.GetAsync("api/f1/2019/1/results.json");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var jDoc = JsonDocument.Parse(json);
+                var prop = jDoc.RootElement.GetProperty("constructorId").GetString();
+                
+                return new List<F1DriversDomainModel>();
+            }
+            else
+            {
+                var errorCode = Enum.GetName(typeof(HttpStatusCode), response.StatusCode);
+                throw new HttpRequestException(errorCode);
+            }
         }
         
-        public IEnumerable<F1DriversDomainModel> GetDriversByTeam(string team)
+        public Task<IEnumerable<F1DriversDomainModel>> GetDriversByTeam(string team)
         {
             throw new NotImplementedException();
         }

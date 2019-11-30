@@ -28,4 +28,10 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="F1Drivers.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

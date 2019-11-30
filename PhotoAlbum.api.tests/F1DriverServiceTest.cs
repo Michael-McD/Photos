@@ -12,16 +12,25 @@ using Xunit;
 using FluentAssertions;
 using System.Linq;
 using Newtonsoft.Json;
+using PhotoAlbum.API.Models;
 
 namespace PhotoAlbum.api.tests
 {
     public class F1DriverServiceTest
     {
+        private string foo = "ewe";
+
+        private List<F1DriversDomainModel> expectedF1Drivers = new List<F1DriversDomainModel>
+        {
+            new F1DriversDomainModel {Forename = "Valtteri", Surname = "Bottas", Fullname = "Valtteri Bottas", Nationality = "Finnish", Team = "Mercedes"},
+            new F1DriversDomainModel {Forename = "Lewis", Surname = "Hamilton", Fullname = "Lewis Hamilton", Nationality = "British", Team = "Mercedes"},
+            new F1DriversDomainModel {Forename = "Max", Surname = "Verstappen", Fullname = "Max Verstappen", Nationality = "Dutch", Team = "Red Bull"}
+        };
+        
         [Fact]
         public void Can_Get_Drivers()
         {
             // arrange
-            
             var source = File.ReadAllText("F1Drivers.json");
             
             var delegatingHandlerStub = new DelegatingHandlerStub(new HttpResponseMessage() {
@@ -35,7 +44,7 @@ namespace PhotoAlbum.api.tests
             var actual = service.GetDrivers();
 
             // assert
-            //actual.Should().BeEquivalentTo(expected);
+            actual.Should().BeEquivalentTo(expectedF1Drivers);
         }
     }
 }
